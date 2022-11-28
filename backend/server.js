@@ -17,6 +17,7 @@ server.listen(process.env.PORT || 3000);  */
 const http = require('http');
 const app = require('./app');
 
+
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -30,7 +31,15 @@ const normalizePort = val => {
 };
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
+app.get("/user", (req, res)=> {
+  return res.send("<h1>Bonjour</h1>");
+})
+app.get("/cheikh", (req, res) => {
+  return res.json({"nom": "diouf", "prenom": "cheikh"})
+})
+app.post("/newuser", (req, res) => {
+  
+})
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
